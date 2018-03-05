@@ -25,7 +25,7 @@ def floodfillb(startx, starty, posx, posy, lastx, lasty, vis, n, path, maze):
         path[positionx][positiony] = n
         vis[positionx][positiony] = 'x'
         n = n + 1
-        if maze[positionx][positiony] == 1:  # represents cell with a bottom wall
+        if maze[positionx][positiony] == "M_1":  # represents cell with a bottom wall
             if lastx == positionx-1:         # if coming from the top, go right(first call) and go left(second call)
                 floodfillb(startx, starty, positionx, positiony + 1, positionx, positiony, vis, n, path, maze)
                 floodfillb(startx, starty, positionx, positiony - 1, positionx, positiony, vis, n, path, maze)
@@ -35,7 +35,7 @@ def floodfillb(startx, starty, posx, posy, lastx, lasty, vis, n, path, maze):
             elif lasty == positiony+1:       # if coming from right, go up(first call) and go left(second call)
                 floodfillb(startx, starty, positionx - 1, positiony, positionx, positiony, vis, n, path, maze)
                 floodfillb(startx, starty, positionx, positiony - 1, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 2:
+        elif maze[positionx][positiony] == "M_2":
             if lastx == positionx-1:
                 floodfillb(startx, starty, positionx, positiony - 1, positionx, positiony, vis, n, path, maze)
                 floodfillb(startx, starty, positionx + 1, positiony, positionx, positiony, vis, n, path, maze)
@@ -45,12 +45,12 @@ def floodfillb(startx, starty, posx, posy, lastx, lasty, vis, n, path, maze):
             elif lasty == positiony-1:
                 floodfillb(startx, starty, positionx + 1, positiony, positionx, positiony, vis, n, path, maze)
                 floodfillb(startx, starty, positionx - 1, positiony, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 3:
+        elif maze[positionx][positiony] == "M_3":
             if lastx == positionx-1:
                 floodfillb(startx, starty, positionx, positiony - 1, positionx, positiony, vis, n, path, maze)
             elif lasty == positiony-1:
                 floodfillb(startx, starty, positionx - 1, positiony, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 4:
+        elif maze[positionx][positiony] == "M_4":
             if lastx == positionx+1:
                 floodfillb(startx, starty, positionx, positiony - 1, positionx, positiony, vis, n, path, maze)
                 floodfillb(startx, starty, positionx, positiony + 1, positionx, positiony, vis, n, path, maze)
@@ -60,19 +60,19 @@ def floodfillb(startx, starty, posx, posy, lastx, lasty, vis, n, path, maze):
             elif lasty == positiony+1:
                 floodfillb(startx, starty, positionx + 1, positiony, positionx, positiony, vis, n, path, maze)
                 floodfillb(startx, starty, positionx, positiony - 1, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 5:
+        elif maze[positionx][positiony] == "M_5":
             if lasty == positiony-1:
                 floodfillb(startx, starty, positionx, positiony + 1, positionx, positiony, vis, n, path, maze)
             elif lasty == positiony+1:
                 floodfillb(startx, starty, positionx, positiony - 1, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 6:
+        elif maze[positionx][positiony] == "M_6":
             if lastx == positionx+1:
                 floodfillb(startx, starty, positionx, positiony - 1, positionx, positiony, vis, n, path, maze)
             elif lasty == positiony-1:
                 floodfillb(startx, starty, positionx + 1, positiony, positionx, positiony, vis, n, path, maze)
         # elif maze[positionx][positiony] == 7:
             # if lasty == positiony-1:
-        elif maze[positionx][positiony] == 8:
+        elif maze[positionx][positiony] == "M_8":
             if lastx == positionx-1:
                 floodfillb(startx, starty, positionx + 1, positiony, positionx, positiony, vis, n, path, maze)
                 floodfillb(startx, starty, positionx, positiony + 1, positionx, positiony, vis, n, path, maze)
@@ -82,19 +82,19 @@ def floodfillb(startx, starty, posx, posy, lastx, lasty, vis, n, path, maze):
             elif lasty == positiony+1:
                 floodfillb(startx, starty, positionx - 1, positiony, positionx, positiony, vis, n, path, maze)
                 floodfillb(startx, starty, positionx + 1, positiony, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 9:
+        elif maze[positionx][positiony] == "M_9":
             if lastx == positionx-1:
                 floodfillb(startx, starty, positionx, positiony + 1, positionx, positiony, vis, n, path, maze)
             elif lasty == positiony+1:
                 floodfillb(startx, starty, positionx - 1, positiony, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 10:
+        elif maze[positionx][positiony] == "M_10":
             if lastx == positionx-1:
                 floodfillb(startx, starty, positionx + 1, positiony, positionx, positiony, vis, n, path, maze)
             elif lastx == positionx+1:
                 floodfillb(startx, starty, positionx - 1, positiony, positionx, positiony, vis, n, path, maze)
         # elif maze[positionx][positiony] == 11:
             # floodfill(startx, starty, positionx-1, positiony, positionx, positiony, maze)
-        elif maze[positionx][positiony] == 12:
+        elif maze[positionx][positiony] == "M_12":
             if lastx == positionx+1:
                 floodfillb(startx, starty, positionx, positiony + 1, positionx, positiony, vis, n, path, maze)
             elif lasty == positiony+1:
@@ -129,47 +129,47 @@ def floodfill(startx, starty, posx, posy, vis, path, maze):
         n = n + 1                        # increment n by 1
 
         # depending on the cell configuration, move to all the open adjacent cells by calling floodfillb()
-        if maze[positionx][positiony] == 1:
+        if maze[positionx][positiony] == "M_1":
             floodfillb(startx, starty, positionx-1, positiony, positionx, positiony, vis, n, path, maze)
             floodfillb(startx, starty, positionx, positiony+1, positionx, positiony, vis, n, path, maze)
             floodfillb(startx, starty, positionx, positiony-1, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 2:
+        elif maze[positionx][positiony] == "M_2":
             floodfillb(startx, starty, positionx + 1, positiony, positionx, positiony, vis, n, path, maze)
             floodfillb(startx, starty, positionx - 1, positiony, positionx, positiony, vis, n, path, maze)
             floodfillb(startx, starty, positionx, positiony-1, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 3:
+        elif maze[positionx][positiony] == "M_3":
             floodfillb(startx, starty, positionx - 1, positiony, positionx, positiony, vis, n, path, maze)
             floodfillb(startx, starty, positionx, positiony - 1, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 4:
+        elif maze[positionx][positiony] == "M_4":
             floodfillb(startx, starty, positionx+1, positiony, positionx, positiony, vis, n, path, maze)
             floodfillb(startx, starty, positionx, positiony-1, positionx, positiony, vis, n, path, maze)
             floodfillb(startx, starty, positionx, positiony+1, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 5:
+        elif maze[positionx][positiony] == "M_5":
             floodfillb(startx, starty, positionx, positiony+1, positionx, positiony, vis, n, path, maze)
             floodfillb(startx, starty, positionx, positiony-1, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 6:
+        elif maze[positionx][positiony] == "M_6":
             floodfillb(startx, starty, positionx, positiony-1, positionx, positiony, vis, n, path, maze)
             floodfillb(startx, starty, positionx+1, positiony, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 7:
+        elif maze[positionx][positiony] == "M_7":
             floodfillb(startx, starty, positionx, positiony-1, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 8:
+        elif maze[positionx][positiony] == "M_8":
             floodfillb(startx, starty, positionx+1, positiony, positionx, positiony, vis, n, path, maze)
             floodfillb(startx, starty, positionx-1, positiony, positionx, positiony, vis, n, path, maze)
             floodfillb(startx, starty, positionx, positiony+1, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 9:
+        elif maze[positionx][positiony] == "M_9":
             floodfillb(startx, starty, positionx-1, positiony, positionx, positiony, vis, n, path, maze)
             floodfillb(startx, starty, positionx, positiony+1, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 10:
+        elif maze[positionx][positiony] == "M_10":
             floodfillb(startx, starty, positionx+1, positiony, positionx, positiony, vis, n, path, maze)
             floodfillb(startx, starty, positionx-1, positiony, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 11:
+        elif maze[positionx][positiony] == "M_11":
             floodfillb(startx, starty, positionx-1, positiony, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 12:
+        elif maze[positionx][positiony] == "M_12":
             floodfillb(startx, starty, positionx+1, positiony, positionx, positiony, vis, n, path, maze)
             floodfillb(startx, starty, positionx, positiony+1, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 13:
+        elif maze[positionx][positiony] == "M_13":
             floodfillb(startx, starty, positionx, positiony+1, positionx, positiony, vis, n, path, maze)
-        elif maze[positionx][positiony] == 14:
+        elif maze[positionx][positiony] == "M_14":
             floodfillb(startx, starty, positionx+1, positiony, positionx, positiony, vis, n, path, maze)
 
     return
