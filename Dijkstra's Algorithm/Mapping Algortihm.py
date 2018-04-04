@@ -55,60 +55,143 @@ class Graph(object):
         return res
 
 
-if __name__ == "__main__":
-    g = {}
+# if __name__ == "__main__":
+g = {}
 
-    graph = Graph(g)
+graph = Graph(g)
 
-    nodes_visited_counter = 0
+nodes_visited_counter = 0
 
-    for i in range(0, 6):               # Creates Vertices
-        for j in range(0, 6):
-            v = str(i) + str(j)
-            graph.add_vertex(v)
+for i in range(0, 6):              # Creates vertices for map
+    for j in range(0, 6):
+        v = str(i) + "_" + str(j)            # i <- row
+        graph.add_vertex(v)                  # j <- column
+print(graph.vertices())
 
-    def movement(*sensor):
-        left_sensor, front_sensor, right_sensor, _ = *sensors
+def movement(*sensors, current_vertex):         # Moves west, north, right, or south based on input
+    *_, left_sensor, front_sensor, right_sensor, _ = sensors
 
-    def go_back_to_flag(*sensor):
-
-
-    def map_algorithm(*sensors, initial_V, final_V, orientation):
-        left_sensor, front_sensor, right_sensor, _ = *sensors
-
-        if orientation == 0:
+    if (left_sensor + front_sensor + right_sensor) == 1:      # if condition is true, there is two exits
 
 
-        if orientation == 1:
+    elif (left_sensor + front_sensor + right_sensor) == 2:      # if condition is true, there is only one exit
+        motion = str(left_sensor) + str(front_sensor) + str(right_sensor) + str(0)
+        print(motion)
 
 
-        if orientation == 2:
+    elif (left_sensor + front_sensor + right_sensor) == 3:      # if condition is true, there is 3 wall
+        move_to_flag(sensors)                          # we ave to return to last node with  flag
 
+def graph_map(*sensors, current_vertex, orientation):           # connects edge based on sensor input and orientation
 
-        if orientation == 3:
+    *_, left_sensor, front_sensor, right_sensor, _ = sensors
 
+    current_row, current_column = current_vertex.split("_")
 
+    if orientation == 0:             # Robot is facing West
 
+        left_row = int(current_row) + 1
+        left_column = int (current_column)
+        left_vertex = str(left_row) + "_" + str(left_column)
 
-    # print("Edges of graph:")
-    # print(graph.edges())
-    # print("Add vertex:")
-    # graph.add_vertex("z")
-    # print("Vertices of graph:")
-    # print(graph.vertices())
-    # print("Add an edge:")
-    # graph.add_edge({"a", "z"})
-    # print("Vertices of graph:")
-    # print(graph.vertices())
-    # print("Edges of graph:")
-    # print(graph.edges())
-    # print('Adding an edge {"x","y"} with new vertices:')
-    # graph.add_edge({"x", "y"})
-    # print("Vertices of graph:")
-    # print(graph.vertices())
-    # print("Edges of graph:")
-    # print(graph.edges())
+        front_row = int(current_row)
+        front_column = int(current_column) - 1
+        front_vertex = str(front_row) + "_" + str(front_column)
 
+        right_row = int(current_row) - 1
+        right_column = int(current_column)
+        right_vertex = str(right_row) + "_" + str(right_column)
 
+        if left_sensor == 0:
+            graph.add_edge({current_vertex,left_vertex})
+        if front_sensor == 0:
+            graph.add_edge({current_vertex,front_vertex})
+        if right_sensor == 0:
+            graph.add_edge({current_vertex,right_vertex})
 
+    elif orientation == 1:                # Robot is facing North
 
+        left_row = int(current_row)
+        left_column = int(current_column) - 1
+        left_vertex = str(left_row) + "_" + str(left_column)
+
+        front_row = int(current_row) - 1
+        front_column = int(current_column)
+        front_vertex = str(front_row) + "_" + str(front_column)
+
+        right_row = int(current_row)
+        right_column = int (current_column) + 1
+        right_vertex = str(right_row) + "_" + str(right_column)
+
+        if left_sensor == 0:
+            graph.add_edge({current_vertex,left_vertex})
+        if front_sensor == 0:
+            graph.add_edge({current_vertex,front_vertex})
+        if right_sensor == 0:
+            graph.add_edge({current_vertex,right_vertex})
+
+    elif orientation == 2:              # Robot is facing East
+
+        left_row = int(current_row) - 1
+        left_column = int(current_column)
+        left_vertex = str(left_row) + "_" + str(left_column)
+
+        front_row = int(current_row)
+        front_column = int(current_column) + 1
+        front_vertex = str(front_row) + "_" + str(front_column)
+
+        right_row = int(current_row) + 1
+        right_column = int(current_column)
+        right_vertex = str(right_row) + "_" + str(right_column)
+
+        if left_sensor == 0:
+            graph.add_edge([current_vertex,left_vertex])
+        if front_sensor == 0:
+            graph.add_edge([current_vertex,front_vertex])
+        if right_sensor == 0:
+            graph.add_edge([current_vertex,right_vertex])
+
+    elif orientation == 3:              # Robot is facing South
+
+        left_row = int(current_row)
+        left_column = int(current_column) + 1
+        left_vertex = str(left_row) + "_" + str(left_column)
+
+        front_row = int(current_row) + 1
+        front_column = int(current_column)
+        front_vertex = str(front_row) + "_" + str(front_column)
+
+        right_row = int(current_row)
+        right_column = int(current_column) - 1
+        right_vertex = str(right_row) + "_" + str(right_column)
+
+        if left_sensor == 0:
+            graph.add_edge({current_vertex,left_vertex})
+        if front_sensor == 0:
+            graph.add_edge({current_vertex,front_vertex})
+        if right_sensor == 0:
+            graph.add_edge({current_vertex,right_vertex})
+
+    # # print("Edges of graph:")
+    # # print(graph.edges())
+    # # print("Add vertex:")
+    # # graph.add_vertex("z")
+    # # print("Vertices of graph:")
+    # # print(graph.vertices())
+    # # print("Add an edge:")
+    # # graph.add_edge({"a", "z"})
+    # # print("Vertices of graph:")
+    # # print(graph.vertices())
+    # # print("Edges of graph:")
+    # # print(graph.edges())
+    # # print('Adding an edge {"x","y"} with new vertices:')
+    # # graph.add_edge({"x", "y"})
+    # # print("Vertices of graph:")
+    # # print(graph.vertices())
+    # # print("Edges of graph:")
+    # # print(graph.edges())
+
+def move_to_flag(*sensors):      # Goes back to last marked flag
+    print(1)
+
+def mapping_algorithm(graph, start, end):
