@@ -68,11 +68,11 @@ for i in range(0, 6):              # Creates vertices for map
         graph.add_vertex(v)                  # j <- column
 print(graph.vertices())
 
-def movement(*sensors, current_vertex):         # Moves west, north, right, or south based on input
+def movement(*sensors, current_vertex):         # Moves west, north, east, or south based on input
     *_, left_sensor, front_sensor, right_sensor, _ = sensors
 
     if (left_sensor + front_sensor + right_sensor) == 1:      # if condition is true, there is two exits
-
+        print("Place Flag")
 
     elif (left_sensor + front_sensor + right_sensor) == 2:      # if condition is true, there is only one exit
         motion = str(left_sensor) + str(front_sensor) + str(right_sensor) + str(0)
