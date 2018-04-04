@@ -191,7 +191,12 @@ def graph_map(*sensors, current_vertex, orientation):           # connects edge 
     # # print("Edges of graph:")
     # # print(graph.edges())
 
-def move_to_flag(*sensors):      # Goes back to last marked flag
-    print(1)
+def move_to_flag(*sensors, current_vertex, last_flagged):      # Goes back to last marked flag
+    *_, left_sensor, front_sensor, right_sensor, _ = sensors
+    while (current_vertex != last_flagged):
+        motion = str(left_sensor) + str(front_sensor) + str(right_sensor) + str(0)
+        print(motion)
+        
+
 
 def mapping_algorithm(graph, start, end):
