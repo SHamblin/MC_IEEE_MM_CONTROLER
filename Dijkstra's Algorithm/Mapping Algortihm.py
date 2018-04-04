@@ -67,26 +67,41 @@ if __name__ == "__main__":
             v = str(i) + str(j)
             graph.add_vertex(v)
 
-    def movement(*sensor):
-        left_sensor, front_sensor, right_sensor, _ = *sensors
+    def movement(left_sensor, front_sensor, right_sensor):
+        determine_flag = left_sensor + front_sensor + right_sensor
+        if determine_flag == 3:     # all sensors are blocked (nowhere to move)
+            return # INSERT turn 180 degrees
+        
+        elif determine_flag == 2:
+            if left_sensor == 0:
+                return # INSERT move left
+            elif front_sensor == 0:
+                return # INSERT move forward
+            elif right_sensor == 0:
+                return # INSERT move right
 
-    def go_back_to_flag(*sensor):
+        elif determine_flag == 1:    # one sensor is blocked (two open paths. set a flag)
+            go_back_to_flag()
+
+    def go_back_to_flag(left_sensor, front_sensor, right_sensor):
+        return
 
 
-    def map_algorithm(*sensors, initial_V, final_V, orientation):
-        left_sensor, front_sensor, right_sensor, _ = *sensors
+
+    def map_algorithm(left_sensor, front_sensor, right_sensor, initial_V, final_V, orientation):
+        #left_sensor, front_sensor, right_sensor, _ = *sensor
 
         if orientation == 0:
-
+            return
 
         if orientation == 1:
-
+            return
 
         if orientation == 2:
-
+            return
 
         if orientation == 3:
-
+            return
 
 
 
