@@ -1,7 +1,58 @@
 import Waypoint
 
+#PLEASE READ BEFORE RUNNING
+#This is a quick test set up. It uses a 3x3 Grid for testing so keep that in mind
+#as you run the code. you can decide where the wall are but as of right now
+#it is still not fully implemented.
+#MISSING:
+#Edge detection
+#Fagging
+
+#These two just need to be implemented with the current set up.
+#should not take long.
 
 
+def maze_map():#Maze mapping
+
+    #Getting the sensor values
+    Rot = 0
+    Vertices = {}
+
+    visited=[[0,0,0],[0,0,0],[0,0,0]]
+    maze=[['A','B','C'],['D','E','F'],['G','H','I']]
+    Start = 0 #The code can be easily changed so these initial values are from outside
+
+    while True:
+
+        if Start == 0:
+            i = 2
+            j = 0
+            Vertex = maze[i][j]
+            Update = {Vertex:[]}
+            Vertices.update(Update)
+            print(Vertices)
+            Start = Start + 1
+
+        Vertex = maze[i][j]
+
+        L,F,R = map(int,input('Left, Front, Right (1 is wall, 0 is no wall): ').split(','));
+
+        print(L,F,R)
+        print(Vertex)
+
+        if visited[i][j] == 0:
+
+            neighbour(L,F,R,Vertex,maze,Vertices,Rot,i,j)
+            visited[i][j] = 1
+            m = move(L,F,R,Rot,i,j)
+            i = 0 + m[0]
+            j = 0 + m[1]
+            Rot = 0 + m[2]
+            print (m[0],m[1])
+            print(i,j)
+        else:
+            print('Visited')
+        print(Vertices)
 
 def neighbour(L,F,R,Vertex,maze,Vertices,Rot,i,j): #This sets the neighbours
 
@@ -151,47 +202,5 @@ def move(L,F,R,Rot,i,j):#This changes the current position of within the matrix
     m = [a,b,Rot]
     print(m)
     return m
-
-def maze_map():#Maze mapping
-
-    #Getting the sensor values
-    Rot = 0
-    Vertices = {}
-
-    visited=[[0,0,0],[0,0,0],[0,0,0]]
-    maze=[['A','B','C'],['D','E','F'],['G','H','I']]
-    Start = 0 #The code can be easily changed so these initial values are from outside
-
-    while True:
-
-        if Start == 0:
-            i = 2
-            j = 0
-            Vertex = maze[i][j]
-            Update = {Vertex:[]}
-            Vertices.update(Update)
-            print(Vertices)
-            Start = Start + 1
-
-        Vertex = maze[i][j]
-
-        L,F,R = map(int,input('Left, Front, Right (1 is wall, 0 is no wall): ').split(','));
-
-        print(L,F,R)
-        print(Vertex)
-
-        if visited[i][j] == 0:
-
-            neighbour(L,F,R,Vertex,maze,Vertices,Rot,i,j)
-            visited[i][j] = 1
-            m = move(L,F,R,Rot,i,j)
-            i = 0 + m[0]
-            j = 0 + m[1]
-            Rot = 0 + m[2]
-            print (m[0],m[1])
-            print(i,j)
-        else:
-            print('Visited')
-        print(Vertices)
 
 maze_map()
