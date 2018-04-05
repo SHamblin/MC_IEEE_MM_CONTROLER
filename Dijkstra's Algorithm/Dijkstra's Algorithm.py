@@ -22,7 +22,8 @@ def dijkstra(graph,start,goal):
             elif shortest_distance[node] < shortest_distance[minNode]:
                 minNode = node
 
-        for childNode, 1 in graph[minNode].items():
+        for childNode, weight in graph[minNode].items():
+            weight = 1
             if weight + shortest_distance[minNode] < shortest_distance[childNode]:
                 shortest_distance[childNode] = weight + shortest_distance[minNode]
                 predecessor[childNode] = minNode
@@ -43,4 +44,4 @@ def dijkstra(graph,start,goal):
         print('shortest_distance is ' + str(shortest_distance[goal]))
         print(str(path))
 
-dijkstra(Map.map, 'F0', 'F5')
+dijkstra(Map.map, 'F1', 'F6')

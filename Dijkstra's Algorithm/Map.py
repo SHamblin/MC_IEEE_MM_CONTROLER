@@ -33,5 +33,49 @@ map = {'F1': {'E1':1},
        'D6': {'C6':1,'E6':1},
        'C6': {'B6':1,'C5':1,'D6':1},
        'B6': {'C6':1},
-       'A6': {'A5':1}
-}
+       'A6': {'A5':1}}
+
+#orientation = { {1},    #A2 North
+#                {0},    #A1 West
+#                {1},    #B1 North
+#                {1},    #C1 North
+#                {2},    #C2 East
+#                {2},    #C3 East
+#                {3},    #B3 South
+#                {0},    #B2 West
+#                {2},    #B3 East
+#                {3}}    #Finished Maze
+
+#input = { {0,0,0,0, 0,1,1,0},   #A2 move left
+#          {0,0,0,0, 1,1,0,0},   #A1 move right
+#          {0,0,0,0, 1,0,1,0},   #B1 move forward
+#          {0,0,0,0, 1,1,0,0},   #C1 move right
+#          {0,0,0,0, 1,0,1,0},   #C2 move forward
+#          {0,0,0,0, 1,1,0,0},   #C3 move right
+#          {0,0,0,0, 1,0,0,0},   #B3 move right ADD FLAG
+#          {0,0,0,0, 1,1,1,0},   #B2 turn 180 degrees 
+#          {0,0,0,0, 0,1,0,0},   #B3 move right
+#          {0,0,0,0, 1,1,1,0}}   #Finished Maze
+
+orientation = [ {1},    #A2 North
+                {0},    #A1 West
+                {1},    #B1 North
+                {1},    #C1 North
+                {2},    #C2 East
+                {2},    #C3 East
+                {3},    #B3 South
+                {0},    #B2 West
+                {2},    #B3 East
+                {3}]    #Finished Maze
+
+input = [ {0,0,0,0, 0,1,1,0},   #A2 move left
+          {0,0,0,0, 1,1,0,0},   #A1 move right
+          {0,0,0,0, 1,0,1,0},   #B1 move forward
+          {0,0,0,0, 1,1,0,0},   #C1 move right
+          {0,0,0,0, 1,0,1,0},   #C2 move forward
+          {0,0,0,0, 1,1,0,0},   #C3 move right
+          {0,0,0,0, 1,0,0,0},   #B3 move right ADD FLAG
+          {0,0,0,0, 1,1,1,0},   #B2 turn 180 degrees 
+          {0,0,0,0, 0,1,0,0},   #B3 move right
+          {0,0,0,0, 1,1,1,0}]   #Finished Maze
+
