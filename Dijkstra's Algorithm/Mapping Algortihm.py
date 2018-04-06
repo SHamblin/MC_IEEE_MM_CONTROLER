@@ -1,5 +1,6 @@
 
 import Map
+from smbus2 import SMBusWrapper
 
 class Graph(object):
     def __init__(self, graph_dict=None):
@@ -328,9 +329,10 @@ def movement(sensors):
 def move_to_flag(*sensors, current_vertex, last_flagged):  # Goes back to last marked flag
     *_, left_sensor, front_sensor, right_sensor, _ = sensors
     while (current_vertex != last_flagged):
-        motion = str(left_sensor) + str(front_sensor) + str(right_sensor)
-        print(motion)
+        if current_vertex == last_flagged:
+            break
 
+        elif (left_sensor + front_sensor + right_sensor) == 2:  # if condition is true, there is only one exit
 
 for i in range(4):
     if i == 0:
