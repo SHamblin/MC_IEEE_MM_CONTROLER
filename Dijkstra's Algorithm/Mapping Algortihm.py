@@ -170,7 +170,7 @@ def graph_map(sensors, current_vertex, orientation):  # connects edge based on s
 def movement(*sensors):
     *_, left_sensor, front_sensor, right_sensor, _ = sensors
 
-    if (left_sensor + front_sensor + right_sensor) == 1:  # if condition is true, there is two exits
+    if (left_sensor + front_sensor + right_sensor) <= 1:  # if condition is true, there is two exits
 
         if left_sensor == 0:
 
@@ -214,14 +214,57 @@ def movement(*sensors):
 
     elif (left_sensor + front_sensor + right_sensor) == 3:  # if condition is true, there is 3 wall
         move_to_flag()               # we have to return to last node with  flag
-        return 3
+        return 3            # turn 180 degrees
 
 
 def move_to_flag(*sensors, current_vertex, last_flagged):  # Goes back to last marked flag
     *_, left_sensor, front_sensor, right_sensor, _ = sensors
     while (current_vertex != last_flagged):
-        motion = str(left_sensor) + str(front_sensor) + str(right_sensor) + str(0)
-        print(motion)
+        if current_vertex == last_flagged:
+            break
+
+        elif (left_sensor + front_sensor + right_sensor) == 2:  # if condition is true, there is only one exit
+
+            motion = str(left_sensor) + str(front_sensor) + str(right_sensor) + str(0)
+
+            if left_sensor == 0:
+                print(motion)
+                return 0
+            if front_sensor == 0:
+                print(motion)
+                return 1
+            if right_sensor == 0:
+                print(motion)
+                return 2
+    else :
+        if (left_sensor + front_sensor + right_sensor) <= 1:  
+
+            if left_sensor == 0:
+
+                front_sensor = 1
+                right_sensor = 1
+
+                motion = str(left_sensor) + str(front_sensor) + str(right_sensor) + str(0)
+                print(motion)
+                return 0
+
+            elif front_sensor == 0:
+
+                left_sensor = 1
+                right_sensor = 1
+
+                motion = str(left_sensor) + str(front_sensor) + str(right_sensor) + str(0)
+                print(motion)
+                return 1
+
+            elif right_sensor == 0:
+                left_sensor = 1
+                front_sensor = 1
+
+                motion = str(left_sensor) + str(front_sensor) + str(right_sensor) + str(0)
+                print(motion)
+                return 2
+        
 
 
 graph_map("00001100", "16_16", 0)
