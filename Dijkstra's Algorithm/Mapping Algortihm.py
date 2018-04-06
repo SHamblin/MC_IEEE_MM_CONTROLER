@@ -1,3 +1,4 @@
+
 import Map
 
 class Graph(object):
@@ -72,152 +73,216 @@ for i in range(0, 6):  # Creates vertices for map
 def graph_map(sensors, current_vertex, orientation):  # connects edge based on sensor input and orientation
 
     *_, left_sensor, front_sensor, right_sensor, _ = sensors
-    print('Left Sensor: ' + str(left_sensor))                # Used for testing input
-    print('Front Sensor: ' + str(front_sensor))
-    print('Right Sensor: ' + str(right_sensor))
+    # print('Left Sensor: ' + str(left_sensor))                # Used for testing input
+    # print('Front Sensor: ' + str(front_sensor))
+    # print('Right Sensor: ' + str(right_sensor))
 
     current_row, current_column = current_vertex.split("_")
     print('Current Vertex: '+ current_vertex)
-    print('Current Row: ' + str(current_row))                     # Used for tersting location
-    print('Current Collumn: ' + str(current_column))
+    # print('Current Row: ' + str(current_row))                     # Used for tersting location
+    # print('Current Collumn: ' + str(current_column))
 
-    print("Orientation: " + str(orientation))                 # Used for testing orientation
+    # print("Orientation: " + str(orientation))                 # Used for testing orientation
 
     if orientation == 0:             # Robot is facing West
 
         left_row = int(current_row) + 1
         left_column = int (current_column)
         left_vertex = str(left_row) + "_" + str(left_column)
-        print('Left Vertex: ' + left_vertex)
+        # print('Left Vertex: ' + left_vertex)
 
         front_row = int(current_row)
         front_column = int(current_column) - 1
         front_vertex = str(front_row) + "_" + str(front_column)
-        print('Front Vertex: ' + front_vertex)
+        # print('Front Vertex: ' + front_vertex)
 
         right_row = int(current_row) - 1
         right_column = int(current_column)
         right_vertex = str(right_row) + "_" + str(right_column)
-        print('Right Vertex: ' + right_vertex)
+        # print('Right Vertex: ' + right_vertex)
 
         if int(left_sensor) == int(0):
             graph.add_edge({current_vertex,left_vertex})
             print('Left Edge Added')
+            print(graph.edges())
 
         if int(front_sensor) == int(0):
             graph.add_edge({current_vertex,front_vertex})
             print('Front Edge Added')
+            print(graph.edges())
 
         if int(right_sensor) == int(0):
             graph.add_edge({current_vertex,right_vertex})
             print('Right Edge Added')
+            print(graph.edges())
 
-        new_position = movement(sensors)
-        print(new_position)
+        left, front,right = movement(sensors)
+
+        if int(left) == int(0):
+            print(left_vertex)
+            return left_vertex
+
+        if int(front) == int(0):
+            print(front_vertex)
+            return front_vertex
+
+        if int(right) == int(0):
+            print(right_vertex)
+            return right_vertex
+
 
     elif orientation == 1:                # Robot is facing North
 
         left_row = int(current_row)
         left_column = int(current_column) - 1
         left_vertex = str(left_row) + "_" + str(left_column)
-        print('Left Vertex:' + left_vertex)
+        # print('Left Vertex: ' + left_vertex)
 
         front_row = int(current_row) - 1
         front_column = int(current_column)
         front_vertex = str(front_row) + "_" + str(front_column)
-        print('Front Vertex: ' + front_vertex)
+        # print('Front Vertex: ' + front_vertex)
 
         right_row = int(current_row)
         right_column = int(current_column) + 1
         right_vertex = str(right_row) + "_" + str(right_column)
-        print('Right Vertex: ' + right_vertex)
+        # print('Right Vertex: ' + right_vertex)
 
         print(left_sensor)
 
         if int(left_sensor) == int(0):
-            print("cookies")
             graph.add_edge({current_vertex,left_vertex})
             print('Left Edge Added')
+            print(graph.edges())
 
-        if front_sensor == 0:
+        if int(front_sensor) == int(0):
             graph.add_edge({current_vertex,front_vertex})
-            print('Front edge added')
+            print('Front Edge Added')
+            print(graph.edges())
 
-        if right_sensor == 0:
+        if int(right_sensor) == int(0):
             graph.add_edge({current_vertex,right_vertex})
-            print('Right edge added')
+            print('Right Edge Added')
+            print(graph.edges())
+
+        left, front, right = movement(sensors)
+
+        if int(left) == int(0):
+            print(left_vertex)
+            return left_vertex
+
+        if int(front) == int(0):
+            print(front_vertex)
+            return front_vertex
+
+        if int(right) == int(0):
+            print(right_vertex)
+            return right_vertex
 
     elif orientation == 2:              # Robot is facing East
 
         left_row = int(current_row) - 1
         left_column = int(current_column)
         left_vertex = str(left_row) + "_" + str(left_column)
-        print('Left Vertex: ' + left_vertex)
+        # print('Left Vertex: ' + left_vertex)
 
         front_row = int(current_row)
         front_column = int(current_column) + 1
         front_vertex = str(front_row) + "_" + str(front_column)
-        print('Front Vertex: ' + front_vertex)
+        # print('Front Vertex: ' + front_vertex)
 
         right_row = int(current_row) + 1
         right_column = int(current_column)
         right_vertex = str(right_row) + "_" + str(right_column)
-        print('Right Vertex: ' + right_vertex)
+        # print('Right Vertex: ' + right_vertex)
 
-        if left_sensor == 0:
+        if int(left_sensor) == int(0):
             graph.add_edge([current_vertex,left_vertex])
             print('Left Edge Added')
+            print(graph.edges())
 
-        if front_sensor == 0:
+        if int(front_sensor) == int(0):
             graph.add_edge([current_vertex,front_vertex])
             print('Front Edge Added')
+            print(graph.edges())
 
-        if right_sensor == 0:
+        if int(right_sensor) == int(0):
             graph.add_edge([current_vertex,right_vertex])
             print('Right Edge Added')
+            print(graph.edges())
+
+        left, front, right = movement(sensors)
+
+        if int(left) == int(0):
+            print(left_vertex)
+            return left_vertex
+
+        if int(front) == int(0):
+            print(front_vertex)
+            return front_vertex
+
+        if int(right) == int(0):
+            print(right_vertex)
+            return right_vertex
 
     elif orientation == 3:              # Robot is facing South
 
         left_row = int(current_row)
         left_column = int(current_column) + 1
         left_vertex = str(left_row) + "_" + str(left_column)
-        print('Left Vertex: ' + left_vertex)
+        # print('Left Vertex: ' + left_vertex)
 
         front_row = int(current_row) + 1
         front_column = int(current_column)
         front_vertex = str(front_row) + "_" + str(front_column)
-        print('Front Vertex: ' + front_vertex)
+        # print('Front Vertex: ' + front_vertex)
 
         right_row = int(current_row)
         right_column = int(current_column) - 1
         right_vertex = str(right_row) + "_" + str(right_column)
-        print('Right Vertex: ' + right_vertex)
+        # print('Right Vertex: ' + right_vertex)
 
-        if int(left_sensor) == 0:
+        if int(left_sensor) == int(0):
             graph.add_edge({current_vertex,left_vertex})
             print('Left Edge Added')
+            print(graph.edges())
 
-        if front_sensor == 0:
+        if int(front_sensor) == int(0):
             graph.add_edge({current_vertex,front_vertex})
             print('Front Edge Added')
+            print(graph.edges())
 
-        if right_sensor == 0:
+        if int(right_sensor) == int(0):
             graph.add_edge({current_vertex,right_vertex})
             print('Right Edge Added')
+            print(graph.edges())
 
+        left, front, right = movement(sensors)
 
-def movement(*sensors):
+        if int(left) == int(0):
+            print(left_vertex)
+            return left_vertex
+
+        if int(front) == int(0):
+            print(front_vertex)
+            return front_vertex
+
+        if int(right) == int(0):
+            print(right_vertex)
+            return right_vertex
+
+def movement(sensors):
     *_, left_sensor, front_sensor, right_sensor, _ = sensors
 
-    if (left_sensor + front_sensor + right_sensor) == 1:  # if condition is true, there is two exits
+    if int(left_sensor) + int(front_sensor) + int(right_sensor) == int(1):  # if condition is true, there is two exits
 
         if left_sensor == 0:
 
             front_sensor = 1
             right_sensor = 1
 
-            motion = str(left_sensor) + str(front_sensor) + str(right_sensor) + str(0)
-            print(motion)
+            motion = str(left_sensor) + str(front_sensor) + str(right_sensor)
+            print("Moving Left")
             return motion
 
         elif front_sensor == 0:
@@ -225,47 +290,54 @@ def movement(*sensors):
             left_sensor = 1
             right_sensor = 1
 
-            motion = str(left_sensor) + str(front_sensor) + str(right_sensor) + str(0)
-            print(motion)
+            motion = str(left_sensor) + str(front_sensor) + str(right_sensor)
+            print('Moving Forward')
             return motion
 
         elif right_sensor == 0:
             left_sensor = 1
             front_sensor = 1
 
-            motion = str(left_sensor) + str(front_sensor) + str(right_sensor) + str(0)
-            print(motion)
+            motion = str(left_sensor) + str(front_sensor) + str(right_sensor)
+            print('Moving Right')
             return motion
 
-    elif (left_sensor + front_sensor + right_sensor) == 2:  # if condition is true, there is only one exit
+    elif int(left_sensor) + int(front_sensor) + int(right_sensor) == int(2):  # if conditioin is true, there is only one exit
 
-        motion = str(left_sensor) + str(front_sensor) + str(right_sensor) + str(0)
+        motion = str(left_sensor) + str(front_sensor) + str(right_sensor)
 
-        if left_sensor == 0:
-            print(motion)
-            return motion
-        if front_sensor == 0:
-            print(motion)
-            return motion
-        if right_sensor == 0:
-            print(motion)
+        if int(left_sensor) == int(0):
+            print('Moving Left')
             return motion
 
+        if int(front_sensor) == int(0):
+            print('Moving Forward')
+            return motion
 
-    elif (left_sensor + front_sensor + right_sensor) == 3:  # if condition is true, there is 3 wall
-        move_to_flag()               # we have to return to last node with  flag
+        if int(right_sensor) == 0:
+            print('Moving Right')
+            return motion
+
+
+    elif int(left_sensor + front_sensor + right_sensor) == int(3):  # if condition is true, there is 3 wall
+        # move_to_flag()               # we have to return to last node with  flag
+        print("Going Back to Flag")
         return "0001"
 
 
 def move_to_flag(*sensors, current_vertex, last_flagged):  # Goes back to last marked flag
     *_, left_sensor, front_sensor, right_sensor, _ = sensors
     while (current_vertex != last_flagged):
-        motion = str(left_sensor) + str(front_sensor) + str(right_sensor) + str(0)
+        motion = str(left_sensor) + str(front_sensor) + str(right_sensor)
         print(motion)
 
 
-graph_map(Map.input[0], "16_16", Map.orientation[0])
-
+for i in range(4):
+    if i == 0:
+        initial_vertex = "2_1"
+        new_vertex = graph_map(Map.input[i], initial_vertex, Map.orientation[i])
+    else:
+        new_vertex = graph_map(Map.input[i], new_vertex, Map.orientation[i])
 # print("Edges of graph:")
 # print(graph.edges())
 # print("Add vertex:")
