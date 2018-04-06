@@ -1,6 +1,6 @@
 
 import Map
-from smbus2 import SMBusWrapper
+# from smbus2 import SMBusWrapper
 
 class Graph(object):
     def __init__(self, graph_dict=None):
@@ -319,7 +319,6 @@ def movement(sensors):
             print('Moving Right')
             return motion
 
-
     elif int(left_sensor + front_sensor + right_sensor) == int(3):  # if condition is true, there is 3 wall
         # move_to_flag()               # we have to return to last node with  flag
         print("Going Back to Flag")
@@ -331,8 +330,8 @@ def move_to_flag(*sensors, current_vertex, last_flagged):  # Goes back to last m
     while (current_vertex != last_flagged):
         if current_vertex == last_flagged:
             break
-
-        elif (left_sensor + front_sensor + right_sensor) == 2:  # if condition is true, there is only one exit
+        elif int(left_sensor + front_sensor + right_sensor) == int(2):# if condition is true, there is only one exit
+            print("Okay")
 
 for i in range(4):
     if i == 0:
@@ -340,6 +339,7 @@ for i in range(4):
         new_vertex = graph_map(Map.input[i], initial_vertex, Map.orientation[i])
     else:
         new_vertex = graph_map(Map.input[i], new_vertex, Map.orientation[i])
+
 # print("Edges of graph:")
 # print(graph.edges())
 # print("Add vertex:")
