@@ -127,17 +127,17 @@ def graph_map(sensors, current_vertex, orientation):  # connects edge based on s
         print(front)
         print(right)
 
-        # if int(left) == int(0):
-        #     # print(left_vertex)
-        #     return left_vertex
+        if int(left) == int(0):
+            print(left_vertex)
+            return left_vertex
 
-        # if int(front) == int(0):
-        #     # print(front_vertex)
-        #     return front_vertex
+        if int(front) == int(0):
+            print(front_vertex)
+            return front_vertex
 
-        # if int(right) == int(0):
-        #     # print(right_vertex)
-        #     return right_vertex
+        if int(right) == int(0):
+            print(right_vertex)
+            return right_vertex
 
         if int(left) + int(front) + int(right) == int(3):
             graph.add_edge({current_vertex, back_vertex})
@@ -187,17 +187,17 @@ def graph_map(sensors, current_vertex, orientation):  # connects edge based on s
         print(front)
         print(right)
 
-        # if int(left) == int(0):
-        #     # print(left_vertex)
-        #     return left_vertex
-        #
-        # if int(front) == int(0):
-        #     # print(front_vertex)
-        #     return front_vertex
-        #
-        # if int(right) == int(0):
-        #     # print(right_vertex)
-        #     return right_vertex
+        if int(left) == int(0):
+            # print(left_vertex)
+            return left_vertex
+
+        if int(front) == int(0):
+            # print(front_vertex)
+            return front_vertex
+
+        if int(right) == int(0):
+            # print(right_vertex)
+            return right_vertex
 
         if int(left) + int(front) + int(right) == int(3):
             graph.add_edge({current_vertex, back_vertex})
@@ -247,17 +247,17 @@ def graph_map(sensors, current_vertex, orientation):  # connects edge based on s
         print(front)
         print(right)
 
-        # if int(left) == int(0):
-        #     # print(left_vertex)
-        #     return left_vertex
-        #
-        # if int(front) == int(0):
-        #     # print(front_vertex)
-        #     return front_vertex
+        if int(left) == int(0):
+            # print(left_vertex)
+            return left_vertex
 
-        # if int(right) == int(0):
-        #     # print(right_vertex)
-        #     return right_vertex
+        if int(front) == int(0):
+            # print(front_vertex)
+            return front_vertex
+
+        if int(right) == int(0):
+            # print(right_vertex)
+            return right_vertex
 
         if int(left) + int(front) + int(right) == int(3):
             graph.add_edge({current_vertex, back_vertex})
@@ -307,17 +307,17 @@ def graph_map(sensors, current_vertex, orientation):  # connects edge based on s
         print(front)
         print(right)
 
-        # if int(left) == int(0):
-        #     # print(left_vertex)
-        #     return left_vertex
-        #
-        # if int(front) == int(0):
-        #     # print(front_vertex)
-        #     return front_vertex
-        #
-        # if int(right) == int(0):
-        #     # print(right_vertex)
-        #     return right_vertex
+        if int(left) == int(0):
+            print(left_vertex)
+            return left_vertex
+
+        if int(front) == int(0):
+            print(front_vertex)
+            return front_vertex
+
+        if int(right) == int(0):
+            print(right_vertex)
+            return right_vertex
 
         if int(left) + int(front) + int(right) == int(3):
             graph.add_edge({current_vertex, back_vertex})
@@ -331,12 +331,13 @@ def movement(sensors):
     if int(left_sensor) + int(front_sensor) + int(right_sensor) == int(1):  # if condition is true, there is two exits
         print("There is two exits")
 
-        if left_sensor == 0:
+        if int(left_sensor) == int(0):
 
             front_sensor = 1
             right_sensor = 1
 
             motion = str(left_sensor) + str(front_sensor) + str(right_sensor)
+            print(motion)
             print("Moving Left")
 
             # with SMBusWrapper(1) as bus:
@@ -345,13 +346,13 @@ def movement(sensors):
 
             return motion
 
-        elif front_sensor == 0:
+        elif int(front_sensor) == int(0):
 
             left_sensor = 1
             right_sensor = 1
 
             motion = str(left_sensor) + str(front_sensor) + str(right_sensor)
-            # print('Moving Forward')
+            print('Moving Forward')
 
             # with SMBusWrapper(1) as bus:
             #     data = 2
@@ -359,31 +360,32 @@ def movement(sensors):
 
             return motion
 
-        elif right_sensor == 0:
+        elif int(right_sensor) == int(0):
             left_sensor = 1
             front_sensor = 1
 
             motion = str(left_sensor) + str(front_sensor) + str(right_sensor)
-            # print('Moving Right')
+            print('Moving Right')
 
             # with SMBusWrapper(1) as bus:
             #     data = 3
             #     bus.write_byte(33, data)
 
             return motion
-#
+
     if int(left_sensor) + int(front_sensor) + int(right_sensor) == int(2):  # if conditioin is true, there is only one exit
 
         print('There is only one exit')
         motion = str(left_sensor) + str(front_sensor) + str(right_sensor)
+        print(motion)
 
         if int(left_sensor) == int(0):
             print('Moving Left')
-#
+
 #             # with SMBusWrapper(1) as bus:
 #             #     data = 1
 #             #     bus.write_byte(33, data)
-#
+
             return motion
 
         if int(front_sensor) == int(0):
@@ -431,7 +433,7 @@ def movement(sensors):
 #     else:
 #         new_vertex = graph_map(Map.input[i], new_vertex, Map.orientation[i])
 
-graph_map("00000010", '1_1', 3)
+graph_map("00001000", '1_1', 3)
 
 
 # print("Edges of graph:")
