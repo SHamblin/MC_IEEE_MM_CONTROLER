@@ -42,19 +42,21 @@ orientation = [ 1,    #A2 North
                 2,    #C2 East
                 2,    #C3 East
                 3,    #B3 South
-                0,   #B2 West
-                2,    #B3 East
-                3]    #Finished Maze
+                3,    #B2 West
+                1,    #B3 East
+                0]    #Finished Maze
 
 input = ['00000110',   #A2 move left
          '00001100',   #A1 move right
          '00001010',   #B1 move forward
          '00001100',   #C1 move right
-         '00001010']   #C2 move forward
-         #  0,0,0,0, 1,1,0,0},   #C3 move right
-         # {0,0,0,0, 1,0,0,0},   #B3 move right ADD FLAG
-         # {0,0,0,0, 1,1,1,0},   #B2 turn 180 degrees
-#          {0,0,0,0, 0,1,0,0},   #B3 move right
-#          {0,0,0,0, 1,1,1,0}}   #Finished Maze
+         '00001010',   #C2 move forward
+         '00001100',   #C3 move right
+         '00001000',   #B3 ADD FLAG, move forward
+         '00001110',  #B2 turn 180 degrees
+         '00000100',  #B3 move right
+         '00001110']   #Finished Maze
 
+orientation_6_6 = []
 
+map_6_6 = []
